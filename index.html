@@ -3,37 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pink Flea Market Portfolio</title>
+<title>찹쌀몽 커미션 포트폴리오</title>
 <style>
-/* ── 폰트 ── */
 @font-face { font-family: 'Paperlogy'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
 @font-face { font-family: 'Paperlogy'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
 @font-face { font-family: 'Paperlogy'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2'); font-weight: 800; font-display: swap; }
 
 :root {
-  --market-pink: #ff99bb;    /* 어닝 포인트 핑크 */
-  --market-wood: #fff0f5;    /* 부드러운 나무/배경 색상 */
-  --tag-red: #ff5252;        /* 할인/포인트 레드 */
-  --text-brown: #5d4037;     /* 따뜻한 브라운 텍스트 */
+  --market-pink: #ff99bb;
+  --market-wood: #fff0f5;
+  --tag-red: #ff5252;
+  --text-brown: #5d4037;
   --border-pink: #ffcad4;
+  --light-pink: #fff5f8;
 }
+
+* { box-sizing: border-box; }
 
 body {
   font-family: 'Paperlogy', sans-serif;
   background: #fffafa;
+  background-image: radial-gradient(circle, #ffcad430 1px, transparent 1px);
+  background-size: 24px 24px;
   color: var(--text-brown);
-  padding: 40px 15px;
+  padding: 40px 15px 60px;
   line-height: 1.6;
 }
 .container { max-width: 800px; margin: 0 auto; }
 
-/* ── 마켓 상단 (어닝/천막 디자인) ── */
+/* ── 어닝 ── */
 .market-awning {
   height: 60px;
-  background: linear-gradient(90deg, 
-    var(--market-pink) 0%, var(--market-pink) 50%, 
-    #ffffff 50%, #ffffff 100%);
-  background-size: 80px 100%;
+  background: repeating-linear-gradient(90deg,
+    var(--market-pink) 0px, var(--market-pink) 40px,
+    #ffffff 40px, #ffffff 80px);
   border: 4px solid var(--market-pink);
   border-bottom: none;
   border-radius: 20px 20px 0 0;
@@ -42,26 +45,25 @@ body {
 .market-awning::after {
   content: '';
   position: absolute;
-  bottom: -15px; left: -4px; right: -4px;
+  bottom: -16px; left: -4px; right: -4px;
   height: 20px;
-  background-image: radial-gradient(circle at 10px 0, var(--market-pink) 15px, transparent 16px);
+  background-image: radial-gradient(circle at 10px 0, var(--market-pink) 14px, transparent 15px);
   background-size: 40px 20px;
   z-index: 2;
 }
 
-/* ── 메인 가판대 영역 ── */
+/* ── 메인 가판대 ── */
 .market-stall {
   background: #ffffff;
   border: 4px solid var(--market-pink);
   border-radius: 0 0 20px 20px;
-  padding: 50px 30px 30px;
+  padding: 50px 30px 40px;
   box-shadow: 0 10px 0 var(--border-pink);
   position: relative;
 }
 
 section { margin-bottom: 50px; position: relative; }
 
-/* ── 섹션 타이틀 (칠판 느낌) ── */
 .section-title {
   display: inline-block;
   background: var(--text-brown);
@@ -70,11 +72,12 @@ section { margin-bottom: 50px; position: relative; }
   border-radius: 5px;
   font-size: 14px;
   font-weight: 700;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   box-shadow: 2px 2px 0 var(--border-pink);
+  letter-spacing: 0.05em;
 }
 
-/* ── 프로필: 상점 간판 ── */
+/* ── 간판 ── */
 .shop-sign {
   text-align: center;
   border: 2px solid var(--border-pink);
@@ -82,77 +85,254 @@ section { margin-bottom: 50px; position: relative; }
   border-radius: 15px;
   background: var(--market-wood);
   margin-bottom: 40px;
+  position: relative;
 }
+.shop-sign::before, .shop-sign::after {
+  content: '🎀';
+  position: absolute;
+  top: 12px;
+  font-size: 20px;
+}
+.shop-sign::before { left: 15px; }
+.shop-sign::after { right: 15px; }
 .shop-name { font-size: 26px; font-weight: 800; color: var(--market-pink); margin-bottom: 5px; }
+.shop-desc { font-size: 13px; color: var(--text-brown); }
 
-/* ── 포트폴리오: 진열대 상품 ── */
+/* ── NOTICE ── */
+.notice-wrap {
+  background: var(--light-pink);
+  border: 1.5px dashed var(--border-pink);
+  border-radius: 10px;
+  padding: 18px 22px;
+}
+.notice-title {
+  font-size: 13px; font-weight: 800; color: var(--market-pink);
+  margin: 18px 0 6px;
+}
+.notice-title:first-child { margin-top: 0; }
+.notice-list {
+  margin: 0; padding-left: 18px;
+  font-size: 12.5px; line-height: 2;
+}
+.notice-list li { margin-bottom: 2px; }
+.notice-footer {
+  margin-top: 14px;
+  font-size: 11.5px; font-weight: 700;
+  color: var(--tag-red);
+  text-align: center;
+  background: #fff0f5;
+  border: 1px solid var(--border-pink);
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+/* ── 작업 과정 ── */
+.process-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.process-step {
+  background: #fff;
+  border: 1.5px solid var(--border-pink);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 700;
+  box-shadow: 2px 2px 0 var(--border-pink);
+  white-space: nowrap;
+}
+.process-arrow {
+  color: var(--market-pink);
+  font-size: 16px;
+  font-weight: 800;
+}
+.process-note {
+  font-size: 11px;
+  color: #999;
+  margin-top: 6px;
+}
+
+/* ── 기본 작업 사항 ── */
+.default-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.default-item {
+  background: var(--light-pink);
+  border: 1.5px solid var(--border-pink);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 12.5px;
+}
+.default-item strong {
+  display: block;
+  font-size: 11px;
+  color: var(--market-pink);
+  margin-bottom: 2px;
+}
+
+/* ── 가격 ── */
+.menu-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 0; border-bottom: 1px dashed var(--border-pink);
+}
+.menu-name { font-weight: 700; font-size: 14px; }
+.menu-price {
+  background: var(--tag-red); color: #fff;
+  padding: 2px 10px; border-radius: 3px; font-weight: 800;
+  font-size: 13px;
+}
+.menu-sub { font-size: 11px; color: #999; margin-top: 2px; }
+
+/* ── 사용 범위 ── */
+.usage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.usage-card {
+  border: 1.5px solid var(--border-pink);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 2px 2px 0 var(--border-pink);
+}
+.usage-card-img {
+  width: 100%; aspect-ratio: 1;
+  background: #f5e6ea;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px;
+}
+.usage-card-body {
+  background: var(--light-pink);
+  padding: 8px 10px;
+  font-size: 11.5px; font-weight: 700;
+  text-align: center;
+}
+
+/* ── 포트폴리오 ── */
+.type-tabs {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 15px;
+}
+.type-tab {
+  background: #fff; border: 1.5px solid var(--border-pink);
+  padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 700;
+  cursor: pointer; transition: 0.15s;
+}
+.type-tab.active, .type-tab:hover {
+  background: var(--market-pink); color: #fff; border-color: var(--market-pink);
+}
+.pf-section { display: none; }
+.pf-section.active { display: block; }
+.pf-type-desc {
+  font-size: 12.5px; background: var(--light-pink);
+  border-left: 3px solid var(--market-pink);
+  padding: 8px 12px; border-radius: 0 8px 8px 0;
+  margin-bottom: 12px;
+}
 .pf-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
+  gap: 12px;
 }
 .pf-item {
   background: #fff;
-  border: 1px solid var(--border-pink);
-  padding: 10px;
-  border-radius: 5px;
+  border: 1.5px solid var(--border-pink);
+  padding: 8px;
+  border-radius: 6px;
   box-shadow: 3px 3px 0 var(--border-pink);
   transition: 0.2s;
   cursor: pointer;
 }
-.pf-item:hover { transform: rotate(-2deg) translateY(-5px); }
+.pf-item:hover { transform: rotate(-1.5deg) translateY(-4px); }
 .pf-thumb {
   width: 100%; aspect-ratio: 1;
-  background: #eee; border-radius: 3px; overflow: hidden;
-  margin-bottom: 8px;
+  background: #eedde3; border-radius: 3px; overflow: hidden;
+  margin-bottom: 6px; position: relative;
 }
 .pf-thumb img { width: 100%; height: 100%; object-fit: cover; }
-.pf-price-tag {
-  font-size: 11px; font-weight: 800; color: var(--tag-red);
-  text-align: right; border-top: 1px dashed var(--border-pink);
-  padding-top: 5px;
+.pf-label { font-size: 10.5px; font-weight: 800; color: var(--tag-red); text-align: right; }
+
+/* 라이트박스 */
+.lightbox {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.7); z-index: 100;
+  align-items: center; justify-content: center;
+}
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 10px; }
+.lightbox-close {
+  position: absolute; top: 20px; right: 25px;
+  font-size: 30px; color: #fff; cursor: pointer;
+  background: none; border: none; font-family: 'Paperlogy';
 }
 
-/* ── 가격 안내: 수기 메뉴판 ── */
-.menu-list {
-  list-style: none; padding: 0;
-}
-.menu-item {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 12px 0; border-bottom: 1px solid var(--border-pink);
-}
-.menu-name { font-weight: 700; font-size: 15px; }
-.menu-price { 
-  background: var(--tag-red); color: #fff; 
-  padding: 2px 10px; border-radius: 3px; font-weight: 800;
-  transform: rotate(2deg);
-}
-
-/* ── 문의 양식: 포장 주문서 ── */
+/* ── 주문서 ── */
 .order-sheet {
   background: #fff9fa;
   border: 2px solid var(--border-pink);
   padding: 25px;
   border-radius: 10px;
 }
-.input-label { font-size: 12px; font-weight: 800; color: var(--market-pink); margin-bottom: 5px; display: block; }
+.order-group {
+  margin-bottom: 20px;
+}
+.input-label {
+  font-size: 11.5px; font-weight: 800; color: var(--market-pink);
+  margin-bottom: 6px; display: block;
+}
+.radio-row {
+  display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 5px;
+}
+.radio-label {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 13px; font-weight: 700; cursor: pointer;
+}
+.radio-label input { accent-color: var(--market-pink); }
 .market-input {
   width: 100%; border: none; border-bottom: 2px solid var(--border-pink);
-  background: transparent; padding: 10px 5px; margin-bottom: 20px;
-  font-family: 'Paperlogy'; font-size: 14px; outline: none;
+  background: transparent; padding: 8px 5px;
+  font-family: 'Paperlogy'; font-size: 13.5px; outline: none; color: var(--text-brown);
 }
 .market-input:focus { border-bottom-color: var(--market-pink); }
+.input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.checkbox-label {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 700; cursor: pointer; margin-top: 4px;
+}
+.checkbox-label input { accent-color: var(--market-pink); }
+.file-hint { font-size: 11px; color: #aaa; margin-top: 4px; }
 
 .checkout-btn {
   width: 100%; background: var(--market-pink); color: #fff;
-  border: none; padding: 18px; border-radius: 10px;
-  font-size: 18px; font-weight: 800; cursor: pointer;
-  box-shadow: 0 5px 0 var(--market-dark); transition: 0.1s;
+  border: none; padding: 16px; border-radius: 10px;
+  font-size: 17px; font-weight: 800; cursor: pointer; font-family: 'Paperlogy';
+  box-shadow: 0 5px 0 #e07898; transition: 0.1s; margin-top: 5px;
 }
-.checkout-btn:active { transform: translateY(3px); box-shadow: none; }
+.checkout-btn:active { transform: translateY(4px); box-shadow: none; }
 
+/* 복사 완료 토스트 */
+.toast {
+  position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+  background: var(--text-brown); color: #fff;
+  padding: 10px 24px; border-radius: 30px;
+  font-size: 13px; font-weight: 700;
+  opacity: 0; transition: opacity 0.3s; pointer-events: none;
+  z-index: 200;
+}
+.toast.show { opacity: 1; }
+
+/* ── 반응형 ── */
 @media (max-width: 600px) {
   .pf-grid { grid-template-columns: repeat(2, 1fr); }
+  .usage-grid { grid-template-columns: repeat(2, 1fr); }
+  .default-grid { grid-template-columns: 1fr; }
+  .input-row { grid-template-columns: 1fr; }
+  .market-stall { padding: 50px 16px 30px; }
+  .process-row { gap: 5px; }
+  .process-arrow { display: none; }
 }
 </style>
 </head>
@@ -160,74 +340,287 @@ section { margin-bottom: 50px; position: relative; }
 
 <div class="container">
   <div class="market-awning"></div>
-
   <div class="market-stall">
-    
+
+    <!-- 간판 -->
     <div class="shop-sign">
-      <div class="shop-name">🌸 핑크-픽 마켓 🌸</div>
-      <p style="font-size: 13px; color: var(--text-brown);">정성을 담은 따뜻한 그림을 판매합니다</p>
+      <div class="shop-name">🌸 찹쌀몽 커미션 마켓 🌸</div>
+      <div class="shop-desc">정성을 담은 따뜻한 그림을 판매합니다 · @chapssal-mong</div>
     </div>
 
+    <!-- NOTICE -->
     <section>
-      <div class="section-title">NOTICE</div>
-      <ul style="font-size: 13px; padding-left: 20px;">
-        <li>모든 작업물의 저작권은 작가에게 있습니다.</li>
-        <li>작업물은 포트폴리오로 사용될 수 있습니다.</li>
-        <li>슬롯제로 운영되니 신청 전 문의 부탁드려요!</li>
-      </ul>
+      <div class="section-title">📋 NOTICE</div>
+      <div class="notice-wrap">
+        <div class="notice-title">⚠️ 주의사항</div>
+        <ul class="notice-list">
+          <li>해당 작가는 <strong>아트머그, 크레페</strong>를 통해서만 커미션을 받습니다.</li>
+          <li>AI를 활용한 이미지를 예시로 가져오시는 경우, 작가가 의뢰를 거부할 수 있습니다.</li>
+          <li>의뢰주신 이미지는 작가의 SNS 업로드 및 포트폴리오·샘플로 사용될 수 있습니다. (상업용 의뢰는 공개되지 않습니다.)</li>
+          <li>작업 이미지 및 커미션 샘플 이미지의 <strong>2차 가공·AI 학습을 일절 금지</strong>합니다.</li>
+          <li>모든 작업물 및 디자인된 캐릭터의 저작권은 기본적으로 이미지를 작업한 작가에게 있습니다.</li>
+          <li>지정된 방송용/상업용 비용은 작업 이미지 장당에 부과되며, 이미지 및 캐릭터 저작권과는 무관합니다. (저작권 범위는 문의 바랍니다.)</li>
+          <li>SNS·커뮤니티 업로드 또는 프로필 사용 시 <strong>'찹쌀몽' 또는 '@chapssal-mong'</strong>을 기재해 주세요.</li>
+          <li>비트맵 이미지 특성상 사전 사이즈 변경 미요청 후 추후 변경 시 이미지가 깨지며 추가 비용이 발생할 수 있습니다.</li>
+          <li>저작권 침해 행위 적발 또는 욕설·비방 등 모욕적인 언행 시 법적 대응을 할 수 있습니다.</li>
+        </ul>
+
+        <div class="notice-title">📌 작업 관련 안내사항</div>
+        <ul class="notice-list">
+          <li>문의는 오픈채팅·SNS로 주셔도 무방하나, <strong>신청은 반드시 아트머그</strong>로 부탁드립니다 :)</li>
+          <li>모든 작업물은 사전에 합의된 범위 외 사용을 금지합니다. 추후 다른 곳에 사용하시길 원하시면 작가에게 먼저 상의해 주세요.</li>
+          <li>러프는 타인에게 공개하지 말아 주세요. 부득이한 경우 전달 대상과 이유를 미리 알려주세요.</li>
+          <li>합의 없는 활용·타 사이트 업로드·파츠 원본 파일 공유·리터칭·2차 가공·AI 학습은 저작권 침해 행위입니다.<br><span style="font-size:11px;color:#aaa;">예) 픽셀 유동화, 그림 위에 덧그리거나 스티커 붙여 공유, 그림을 움직이도록 재가공 등</span></li>
+          <li>작가가 디자인한 러프·완성본을 타 작가에게 재디자인 요청하는 경우, 저작권 일부 양도 비용을 지불하셔야 합니다.</li>
+          <li>신청 전 캐릭터·참고자료의 저작권 사용 범위를 꼭 확인해 주시고, 추후 발생하는 문제는 작가가 책임지지 않습니다.</li>
+        </ul>
+
+        <div class="notice-footer">🎀 주의사항을 정독하지 않아 발생하는 문제에 대해 작가는 일절 책임지지 않습니다 🎀</div>
+      </div>
     </section>
 
+    <!-- 작업 과정 -->
     <section>
-      <div class="section-title">MENU / PRICE</div>
+      <div class="section-title">🔧 PROCESS</div>
+      <div class="process-row">
+        <div class="process-step">① 내용 상의<br><span class="process-note" style="font-size:10px;color:#bbb">캐릭터·구도·파일형식</span></div>
+        <div class="process-arrow">→</div>
+        <div class="process-step">② 1차 러프 전달</div>
+        <div class="process-arrow">→</div>
+        <div class="process-step">③ 컨택<br><span style="font-size:10px;color:#bbb">형태 수정 가능</span></div>
+        <div class="process-arrow">→</div>
+        <div class="process-step">④ 밑색 작업</div>
+        <div class="process-arrow">→</div>
+        <div class="process-step">⑤ 컨택<br><span style="font-size:10px;color:#bbb">색상 수정 가능</span></div>
+        <div class="process-arrow">→</div>
+        <div class="process-step">⑥ 완성본 전달<br><span style="font-size:10px;color:#bbb">수정 불가</span></div>
+      </div>
+    </section>
+
+    <!-- 기본 작업 사항 -->
+    <section>
+      <div class="section-title">📐 DEFAULT SETTINGS</div>
+      <p style="font-size:12px;color:#aaa;margin-bottom:12px;">따로 요청사항이 없으시면 아래와 같이 작업됩니다.</p>
+      <div class="default-grid">
+        <div class="default-item"><strong>이미지 사이즈</strong>1000 × 1000 px</div>
+        <div class="default-item"><strong>배경</strong>흰색</div>
+        <div class="default-item"><strong>파일 형식</strong>JPEG</div>
+        <div class="default-item"><strong>선 유형</strong>연필</div>
+        <div class="default-item"><strong>선 색상</strong>블랙</div>
+      </div>
+    </section>
+
+    <!-- MENU / PRICE -->
+    <section>
+      <div class="section-title">🏷️ MENU / PRICE</div>
       <div class="menu-list">
         <div class="menu-item">
-          <span class="menu-name">🍓 딸기 타입 (두상/단색)</span>
+          <div>
+            <div class="menu-name">🍓 딸기 타입 <span style="font-size:11px;font-weight:400">(두상 / 단색)</span></div>
+            <div class="menu-sub">간단한 상반신 일러스트</div>
+          </div>
           <span class="menu-price">₩ 20,000</span>
         </div>
         <div class="menu-item">
-          <span class="menu-name">🍑 복숭아 타입 (전신/채색)</span>
+          <div>
+            <div class="menu-name">🍑 복숭아 타입 <span style="font-size:11px;font-weight:400">(전신 / 채색)</span></div>
+            <div class="menu-sub">풀 컬러 전신 일러스트</div>
+          </div>
           <span class="menu-price">₩ 50,000</span>
         </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="section-title">ITEMS ON SALE</div>
-      <div class="pf-grid" id="pfGrid">
-        <div class="pf-item">
-          <div class="pf-thumb"><img src="https://via.placeholder.com/300"></div>
-          <div class="pf-price-tag">SOLD OUT</div>
-        </div>
-        <div class="pf-item">
-          <div class="pf-thumb"><img src="https://via.placeholder.com/300"></div>
-          <div class="pf-price-tag">ITEM 02</div>
-        </div>
-        <div class="pf-item">
-          <div class="pf-thumb"><img src="https://via.placeholder.com/300"></div>
-          <div class="pf-price-tag">ITEM 03</div>
+        <div style="font-size:11.5px;color:#aaa;margin-top:10px;text-align:right;">
+          ※ 방송용·상업용은 별도 금액이 추가됩니다. 문의 주세요.
         </div>
       </div>
     </section>
 
+    <!-- 사용 범위 -->
     <section>
-      <div class="section-title">ORDER SHEET</div>
+      <div class="section-title">📌 USAGE RANGE</div>
+      <p style="font-size:12px;color:#aaa;margin-bottom:14px;">각 범위에 해당하는 이미지를 참고해 주세요. 범위 외 사용은 별도 문의 부탁드립니다.</p>
+      <div class="usage-grid">
+        <div class="usage-card">
+          <div class="usage-card-img">🖼️</div>
+          <div class="usage-card-body">개인 소장 / SNS 프로필</div>
+        </div>
+        <div class="usage-card">
+          <div class="usage-card-img">📺</div>
+          <div class="usage-card-body">방송 / 스트리밍 사용</div>
+        </div>
+        <div class="usage-card">
+          <div class="usage-card-img">💼</div>
+          <div class="usage-card-body">상업적 용도</div>
+        </div>
+      </div>
+      <p style="font-size:11px;color:#bbb;margin-top:10px;text-align:center;">사용 범위 이미지는 추후 업데이트 예정입니다.</p>
+    </section>
+
+    <!-- ITEMS ON SALE / 포트폴리오 -->
+    <section>
+      <div class="section-title">🛍️ ITEMS ON SALE</div>
+
+      <div class="type-tabs">
+        <button class="type-tab active" onclick="switchType('strawberry', this)">🍓 딸기 타입</button>
+        <button class="type-tab" onclick="switchType('peach', this)">🍑 복숭아 타입</button>
+      </div>
+
+      <!-- 딸기 -->
+      <div class="pf-section active" id="pf-strawberry">
+        <div class="pf-type-desc">두상·단색 타입입니다. 간결하고 귀여운 느낌의 작업물이에요 🍓</div>
+        <div class="pf-grid">
+          <div class="pf-item" onclick="openLightbox('https://via.placeholder.com/600')">
+            <div class="pf-thumb"><img src="https://via.placeholder.com/300" alt="sample1"></div>
+            <div class="pf-label">SAMPLE 01</div>
+          </div>
+          <div class="pf-item" onclick="openLightbox('https://via.placeholder.com/600')">
+            <div class="pf-thumb"><img src="https://via.placeholder.com/300" alt="sample2"></div>
+            <div class="pf-label">SAMPLE 02</div>
+          </div>
+          <div class="pf-item" onclick="openLightbox('https://via.placeholder.com/600')">
+            <div class="pf-thumb"><img src="https://via.placeholder.com/300" alt="sample3"></div>
+            <div class="pf-label">SAMPLE 03</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 복숭아 -->
+      <div class="pf-section" id="pf-peach">
+        <div class="pf-type-desc">전신·풀 채색 타입입니다. 꼼꼼한 채색과 따뜻한 분위기가 특징이에요 🍑</div>
+        <div class="pf-grid">
+          <div class="pf-item" onclick="openLightbox('https://via.placeholder.com/600')">
+            <div class="pf-thumb"><img src="https://via.placeholder.com/300" alt="peach1"></div>
+            <div class="pf-label">SAMPLE 01</div>
+          </div>
+          <div class="pf-item" onclick="openLightbox('https://via.placeholder.com/600')">
+            <div class="pf-thumb"><img src="https://via.placeholder.com/300" alt="peach2"></div>
+            <div class="pf-label">SAMPLE 02</div>
+          </div>
+          <div class="pf-item" onclick="openLightbox('https://via.placeholder.com/600')">
+            <div class="pf-thumb"><img src="https://via.placeholder.com/300" alt="peach3"></div>
+            <div class="pf-label">SAMPLE 03</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ORDER SHEET -->
+    <section>
+      <div class="section-title">📝 ORDER SHEET</div>
       <div class="order-sheet">
-        <label class="input-label">BUYER NAME (의뢰인 닉네임)</label>
-        <input type="text" class="market-input" id="fm_nick" placeholder="성함을 적어주세요">
 
-        <label class="input-label">ITEM SELECT (선택 타입)</label>
-        <input type="text" class="market-input" id="fm_type" placeholder="예: 복숭아 타입">
+        <div class="order-group">
+          <label class="input-label">1. 스트리머 여부</label>
+          <div class="radio-row">
+            <label class="radio-label"><input type="radio" name="streamer" value="streamer"> 🎙️ 스트리머</label>
+            <label class="radio-label"><input type="radio" name="streamer" value="non"> 👤 비스트리머</label>
+          </div>
+        </div>
 
-        <label class="input-label">SPECIAL REQUEST (요청 사항)</label>
-        <textarea class="market-input" id="fm_concept" rows="3" placeholder="원하시는 느낌을 자유롭게 적어주세요"></textarea>
+        <div class="order-group">
+          <div class="input-row">
+            <div>
+              <label class="input-label">2. 방송 닉네임</label>
+              <input type="text" class="market-input" id="fm_stream_nick" placeholder="방송에서 사용하는 닉네임">
+            </div>
+            <div>
+              <label class="input-label">활동 닉네임</label>
+              <input type="text" class="market-input" id="fm_act_nick" placeholder="평소 사용하는 닉네임">
+            </div>
+          </div>
+        </div>
+
+        <div class="order-group">
+          <div class="input-row">
+            <div>
+              <label class="input-label">3. 방송 플랫폼</label>
+              <input type="text" class="market-input" id="fm_platform" placeholder="예: 치지직, 아프리카, 트위치">
+            </div>
+            <div>
+              <label class="input-label">사용할 사이트</label>
+              <input type="text" class="market-input" id="fm_site" placeholder="예: 트위터, 인스타그램">
+            </div>
+          </div>
+        </div>
+
+        <div class="order-group">
+          <label class="input-label">4. 이미지 사용 용도</label>
+          <input type="text" class="market-input" id="fm_purpose" placeholder="예: 방송 오버레이, SNS 프로필, 개인 소장">
+        </div>
+
+        <div class="order-group">
+          <label class="input-label">5. 신청하는 캐릭터 샘플 및 자료</label>
+          <input type="text" class="market-input" id="fm_ref" placeholder="이미지 링크 또는 자료 설명을 입력해 주세요">
+          <div class="file-hint">※ 아트머그 신청 시 이미지 첨부 가능합니다.</div>
+        </div>
+
+        <div class="order-group">
+          <label class="input-label">6. 원하시는 구도</label>
+          <textarea class="market-input" id="fm_pose" rows="3" placeholder="원하시는 포즈, 표정, 분위기 등 자유롭게 작성해 주세요"></textarea>
+        </div>
+
+        <div class="order-group">
+          <label class="input-label">7. 샘플 비공개 여부</label>
+          <div class="radio-row">
+            <label class="radio-label"><input type="radio" name="private" value="public"> 🌐 공개 (SNS·포트폴리오 사용 동의)</label>
+            <label class="radio-label"><input type="radio" name="private" value="private"> 🔒 비공개</label>
+          </div>
+        </div>
 
         <button class="checkout-btn" onclick="copyForm()">🛒 주문서 복사하기</button>
       </div>
     </section>
 
-  </div> </div> <script>
-// 기존 자바스크립트 로직(renderPf, copyForm 등)을 그대로 사용하세요!
-</script>
+  </div>
+</div>
 
+<!-- 라이트박스 -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="포트폴리오">
+</div>
+
+<!-- 토스트 -->
+<div class="toast" id="toast">📋 주문서가 복사되었습니다!</div>
+
+<script>
+function switchType(type, btn) {
+  document.querySelectorAll('.pf-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.type-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('pf-' + type).classList.add('active');
+  btn.classList.add('active');
+}
+
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+
+function copyForm() {
+  const streamer = document.querySelector('input[name="streamer"]:checked');
+  const privacyEl = document.querySelector('input[name="private"]:checked');
+  const text = `📝 찹쌀몽 커미션 신청서
+
+1. 스트리머 여부: ${streamer ? (streamer.value === 'streamer' ? '스트리머' : '비스트리머') : '(미선택)'}
+2. 방송 닉네임: ${document.getElementById('fm_stream_nick').value || ''}
+   활동 닉네임: ${document.getElementById('fm_act_nick').value || ''}
+3. 방송 플랫폼: ${document.getElementById('fm_platform').value || ''}
+   사용할 사이트: ${document.getElementById('fm_site').value || ''}
+4. 이미지 사용 용도: ${document.getElementById('fm_purpose').value || ''}
+5. 캐릭터 샘플 및 자료: ${document.getElementById('fm_ref').value || ''}
+6. 원하시는 구도: ${document.getElementById('fm_pose').value || ''}
+7. 샘플 비공개 여부: ${privacyEl ? (privacyEl.value === 'private' ? '비공개' : '공개') : '(미선택)'}`;
+
+  navigator.clipboard.writeText(text).then(() => {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
+  }).catch(() => {
+    alert(text);
+  });
+}
+</script>
 </body>
 </html>
